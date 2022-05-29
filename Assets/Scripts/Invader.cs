@@ -13,9 +13,6 @@ public class Invader : MonoBehaviour
 
     public System.Action killed;
 
-    private RaycastHit2D raycastHit2DUP;
-    private RaycastHit2D raycastHit2DLEFT;
-    private RaycastHit2D raycastHit2DRIGHT;
     private float distance = 2.0f;
     public int life = 2;
 

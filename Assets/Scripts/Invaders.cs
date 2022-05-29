@@ -23,7 +23,7 @@ public class Invaders : MonoBehaviour
 
     public AnimationCurve speed;
 
-    public float missileAttackRate = 25.0f;
+    private int missileAttackRate = 2;
 
     public int amountKilled { get; private set; }
 

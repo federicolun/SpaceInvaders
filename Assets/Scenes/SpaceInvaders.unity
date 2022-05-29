@@ -487,7 +487,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  missileAttackRate: 2
   score: 0
   textScore: {fileID: 1583749709}
 --- !u!4 &471023322
@@ -1367,6 +1366,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625253285}
   m_CullTransparentMesh: 0
+--- !u!1 &1671203937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1671203938}
+  m_Layer: 0
+  m_Name: respawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1671203938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671203937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.01, y: -11.9, z: 0}
+  m_LocalScale: {x: 1.4207, y: 1.4207, z: 1.4207}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1743411670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,6 +1826,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1967083333 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3689481483097616263, guid: 406021ff5c1c2634f9d373d7aa919aa1,
+    type: 3}
+  m_PrefabInstance: {fileID: 3689481482404227433}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967083331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f69296dad3e1dd48a96de60719f0fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1967083334 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3689481483097616258, guid: 406021ff5c1c2634f9d373d7aa919aa1,
+    type: 3}
+  m_PrefabInstance: {fileID: 3689481482404227433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2022932375
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,7 +2124,7 @@ PrefabInstance:
     - target: {fileID: 3689481483097616260, guid: 406021ff5c1c2634f9d373d7aa919aa1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3689481483097616260, guid: 406021ff5c1c2634f9d373d7aa919aa1,
         type: 3}
@@ -2128,8 +2175,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ship
       value: 
-      objectReference: {fileID: 3689481483097616263, guid: 406021ff5c1c2634f9d373d7aa919aa1,
-        type: 3}
+      objectReference: {fileID: 1967083333}
     - target: {fileID: 3689481483097616263, guid: 406021ff5c1c2634f9d373d7aa919aa1,
         type: 3}
       propertyPath: audio
@@ -2140,6 +2186,11 @@ PrefabInstance:
       propertyPath: speed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3689481483097616263, guid: 406021ff5c1c2634f9d373d7aa919aa1,
+        type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 1967083334}
     - target: {fileID: 3689481483097616263, guid: 406021ff5c1c2634f9d373d7aa919aa1,
         type: 3}
       propertyPath: textScore
@@ -2156,6 +2207,16 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3689481483097616263, guid: 406021ff5c1c2634f9d373d7aa919aa1,
+        type: 3}
+      propertyPath: playerScript
+      value: 
+      objectReference: {fileID: 1967083333}
+    - target: {fileID: 3689481483097616263, guid: 406021ff5c1c2634f9d373d7aa919aa1,
+        type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1671203938}
     - target: {fileID: 3689481483097616263, guid: 406021ff5c1c2634f9d373d7aa919aa1,
         type: 3}
       propertyPath: timeToRespawn

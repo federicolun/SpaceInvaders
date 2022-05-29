@@ -15,13 +15,20 @@ public class Player : MonoBehaviour
 
     public GameObject[] lifes;
 
+    public Transform respawnPoint;
+
     public Player ship;
 
     private int hits;
 
-    public GameObject laserSound;
-
     public AudioSource audio;
+
+    public Collider2D collider;
+
+    public Player playerScript;
+
+    private float leftLimit = -14.41f;
+    private float rightLimit = 14.33f;
 
     private void Update()
     {
@@ -37,6 +44,8 @@ public class Player : MonoBehaviour
         {
             Shoot();
         }
+
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, leftLimit, rightLimit), transform.position.y);
     }
 
     private void Shoot()
@@ -62,15 +71,30 @@ public class Player : MonoBehaviour
         {
             hits++;
             Destroy(lifes[0].gameObject);
+            //Destroy(this.gameObject);
+            /*
+            Player shipRespawned = Instantiate(ship, respawnPoint.position, Quaternion.identity);
+            shipRespawned.transform.GetComponent<Collider2D>().enabled = true;
+            shipRespawned.transform.GetComponent<Player>().enabled = true;
+            shipRespawned.transform.GetComponent<AudioSource>().enabled = true;
+            */
         }
         if (hits == 2)
         {
             Destroy(lifes[1].gameObject);
+            //Destroy(this.gameObject);
+            /*
+            Player shipRespawned = Instantiate(ship, respawnPoint.position, Quaternion.identity);
+            shipRespawned.transform.GetComponent<Collider2D>().enabled = true;
+            shipRespawned.transform.GetComponent<Player>().enabled = true;
+            shipRespawned.transform.GetComponent<AudioSource>().enabled = true;
+            */
         }
         if(hits == 3)
         {
+            //Player shipRespawned = Instantiate(ship, respawnPoint.position, Quaternion.identity);
             Destroy(lifes[2].gameObject);
-            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
             SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
     }
