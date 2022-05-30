@@ -13,13 +13,13 @@ public class Player : MonoBehaviour
 
     public Projectile laserPrefab;
 
-    public GameObject[] lifes;
+    public GameObject lifeCounter;
 
     public Transform respawnPoint;
 
     public Player ship;
 
-    private int hits;
+    public int hits;
 
     public AudioSource audio;
 
@@ -70,32 +70,33 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Missile"))
         {
             hits++;
-            Destroy(lifes[0].gameObject);
-            //Destroy(this.gameObject);
-            /*
+
+            Destroy(lifeCounter.transform.GetChild(0).gameObject);
+            Destroy(this.gameObject);
+            
             Player shipRespawned = Instantiate(ship, respawnPoint.position, Quaternion.identity);
             shipRespawned.transform.GetComponent<Collider2D>().enabled = true;
             shipRespawned.transform.GetComponent<Player>().enabled = true;
             shipRespawned.transform.GetComponent<AudioSource>().enabled = true;
-            */
+            
         }
+
         if (hits == 2)
         {
-            Destroy(lifes[1].gameObject);
-            //Destroy(this.gameObject);
-            /*
+            Destroy(lifeCounter.transform.GetChild(0).gameObject);
+            Destroy(this.gameObject);
+
             Player shipRespawned = Instantiate(ship, respawnPoint.position, Quaternion.identity);
             shipRespawned.transform.GetComponent<Collider2D>().enabled = true;
             shipRespawned.transform.GetComponent<Player>().enabled = true;
             shipRespawned.transform.GetComponent<AudioSource>().enabled = true;
-            */
         }
+
         if(hits == 3)
         {
-            //Player shipRespawned = Instantiate(ship, respawnPoint.position, Quaternion.identity);
-            Destroy(lifes[2].gameObject);
+            Destroy(lifeCounter.transform.GetChild(0).gameObject);
             Destroy(this.gameObject);
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
+            SceneManager.LoadScene(0, LoadSceneMode.Single);           
         }
     }
 }
