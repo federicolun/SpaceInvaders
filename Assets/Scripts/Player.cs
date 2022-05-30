@@ -77,19 +77,7 @@ public class Player : MonoBehaviour
             Player shipRespawned = Instantiate(ship, respawnPoint.position, Quaternion.identity);
             shipRespawned.transform.GetComponent<Collider2D>().enabled = true;
             shipRespawned.transform.GetComponent<Player>().enabled = true;
-            shipRespawned.transform.GetComponent<AudioSource>().enabled = true;
-            
-        }
-
-        if (hits == 2)
-        {
-            Destroy(lifeCounter.transform.GetChild(0).gameObject);
-            Destroy(this.gameObject);
-
-            Player shipRespawned = Instantiate(ship, respawnPoint.position, Quaternion.identity);
-            shipRespawned.transform.GetComponent<Collider2D>().enabled = true;
-            shipRespawned.transform.GetComponent<Player>().enabled = true;
-            shipRespawned.transform.GetComponent<AudioSource>().enabled = true;
+            shipRespawned.transform.GetComponent<AudioSource>().enabled = true;           
         }
 
         if(hits == 3)

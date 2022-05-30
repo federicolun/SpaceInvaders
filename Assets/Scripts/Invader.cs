@@ -51,7 +51,7 @@ public class Invader : MonoBehaviour
             if (this.gameObject.name.Equals("InvaderBlue(Clone)") || this.gameObject.name.Equals("InvaderWhite(Clone)"))
             {
 
-                chainDestruction();
+                chainDestruction(this.gameObject);
                 this.killed.Invoke();
                 this.gameObject.SetActive(false);
                 audio.Play();
@@ -64,7 +64,7 @@ public class Invader : MonoBehaviour
 
             if(life == 0)
             {
-                chainDestruction();
+                chainDestruction(this.gameObject);
                 this.killed.Invoke();
                 this.gameObject.SetActive(false);
                 audio.Play();
@@ -72,37 +72,37 @@ public class Invader : MonoBehaviour
         }
     }
 
-    public void chainDestruction()
+    public void chainDestruction(GameObject invaderKilled)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 2.0f);
-        if (this.gameObject.CompareTag(hit.collider.gameObject.tag))
+        invadersMatches = GameObject.FindGameObjectsWithTag(this.gameObject.tag);
+
+        foreach (GameObject invader in invadersMatches)
         {
-            invadersMatches = GameObject.FindGameObjectsWithTag(hit.collider.gameObject.tag);
-
-            foreach (GameObject invader in invadersMatches)
+            if (invaderKilled.transform.localPosition.x == invader.transform.localPosition.x && ((invaderKilled.transform.localPosition.y) - (invader.transform.localPosition.y) == -2))
             {
-                if (this.transform.localPosition.x == invader.transform.localPosition.x && ((this.transform.localPosition.y) - (invader.transform.localPosition.y) == -2))
-                {
-                    invader.SetActive(false);
-                    this.killed.Invoke();
-                }
-                if (this.transform.localPosition.x == invader.transform.localPosition.x && ((this.transform.localPosition.y) - (invader.transform.localPosition.y) == 2))
-                {
-                    invader.SetActive(false);
-                    this.killed.Invoke();
-                }
-
-                if (this.transform.localPosition.y == invader.transform.localPosition.y && ((this.transform.localPosition.x) - (invader.transform.localPosition.x) == -2))
-                {
-                    invader.SetActive(false);
-                    this.killed.Invoke();
-                }
-                if (this.transform.localPosition.y == invader.transform.localPosition.y && ((this.transform.localPosition.x) - (invader.transform.localPosition.x) == 2))
-                {
-                    invader.SetActive(false);
-                    this.killed.Invoke();
-                }
+                invader.SetActive(false);
+                this.killed.Invoke();
+                chainDestruction(invader);
             }
-        }
+            if (invaderKilled.transform.localPosition.x == invader.transform.localPosition.x && ((invaderKilled.transform.localPosition.y) - (invader.transform.localPosition.y) == 2))
+            {
+                invader.SetActive(false);
+                this.killed.Invoke();
+                chainDestruction(invader);
+            }
+
+            if (invaderKilled.transform.localPosition.y == invader.transform.localPosition.y && ((invaderKilled.transform.localPosition.x) - (invader.transform.localPosition.x) == -2))
+            {
+                invader.SetActive(false);
+                this.killed.Invoke();
+                chainDestruction(invader);
+            }
+            if (invaderKilled.transform.localPosition.y == invader.transform.localPosition.y && ((invaderKilled.transform.localPosition.x) - (invader.transform.localPosition.x) == 2))
+            {
+                invader.SetActive(false);
+                this.killed.Invoke();
+                chainDestruction(invader);
+            }
+        } 
     }
 }
