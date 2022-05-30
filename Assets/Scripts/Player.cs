@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
 
     public Player playerScript;
 
-    private float leftLimit = -14.41f;
-    private float rightLimit = 14.33f;
+    private float leftLimit = -26.4f;
+    private float rightLimit = 26.2f;
 
     private void Update()
     {
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
 
         if(hits == 3)
         {
-            Destroy(lifeCounter.transform.GetChild(0).gameObject);
+            Destroy(lifeCounter.transform.GetChild(0));
             Destroy(this.gameObject);
             SceneManager.LoadScene(0, LoadSceneMode.Single);           
         }
